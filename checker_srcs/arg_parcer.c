@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:43:43 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/09 19:18:46 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/09 22:50:30 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		check_args(int ac, char **av)
 		j = 0;
 		while (nums[j])
 		{
-			if (is_atoiable(*nums))
+			if (is_atoiable(nums[j]))
 				len++;
 			else
 				return (-1);
@@ -51,7 +51,7 @@ static int		check_args(int ac, char **av)
 	return (len);
 }
 
-int				*create_table(int ac, char **av, int len)
+static int		*create_table(int ac, char **av, int len)
 {
 	int		i;
 	int		j;
