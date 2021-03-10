@@ -6,12 +6,12 @@
 #    By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/08 16:38:19 by tmatis            #+#    #+#              #
-#    Updated: 2021/03/10 13:27:49 by tmatis           ###   ########.fr        #
+#    Updated: 2021/03/10 19:39:17 by tmatis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS_CHECKER	= main.c arg_parcer.c instructions.c
+SRCS_CHECKER	= main.c arg_parcer.c inst_parser.c instructions.c
 
 OBJS_CHECKER	= $(addprefix checker_srcs/, ${SRCS_CHECKER:.c=.o})
 

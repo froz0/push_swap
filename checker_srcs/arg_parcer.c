@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:43:43 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/09 22:50:30 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/10 19:33:42 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,28 @@ static int		*create_table(int ac, char **av, int len)
 	return (dst);
 }
 
+static	t_bool	find_duplicates(t_stack stack)
+{
+	int temp;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < stack.len)
+	{
+		temp = stack.table[i];
+		j = i + 1;
+		while (j < stack.len)
+		{
+			if (stack.table[i] == stack.table[j])
+				return (true);
+			j++;
+		}
+		i++;
+	}
+	return (false);
+}
+
 t_stack			parse_args(int ac, char **av, int *error)
 {
 	t_stack		stack;
@@ -90,7 +112,14 @@ t_stack			parse_args(int ac, char **av, int *error)
 		if (stack.len == -1)
 			*error = 2;
 		else
+		{
 			stack.table = create_table(ac, av, stack.len);
+			if (find_duplicates(stack))
+			{
+				*error = 3;
+				free(stack.table);
+			}
+		}
 	}
 	else
 	{

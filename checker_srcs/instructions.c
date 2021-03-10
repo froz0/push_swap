@@ -5,39 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 13:22:24 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/10 13:34:16 by tmatis           ###   ########.fr       */
+/*   Created: 2021/03/10 19:17:58 by tmatis            #+#    #+#             */
+/*   Updated: 2021/03/10 19:39:09 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static	int	hash_index(char *str, char **str_table)
+void	ft_sa(t_stack stack_a, t_stack stack_b)
 {
-	int	i;
-
-	i = 0;
-	while (str_table[i])
-	{
-		if (ft_strcmp(str, str_table[i]) == 0)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-t_bool	do_instruction(char *inst, t_stack stack_a, t_stack stack_b)
-{
-	char	*inst_set[2];
-
-	(void) stack_a;
-	(void) stack_b;
-	inst_set[0] = "sa";
-	inst_set[1] = NULL;
-	if (hash_index(inst, inst_set) != -1)
-	{
-	}
-	else
-		return (true);
-	return (false);
+	(void)stack_b;
+	if (stack_a.len >= 2)
+		ft_swap(&stack_a.table[0], &stack_a.table[1]);
 }

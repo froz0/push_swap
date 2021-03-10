@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/10 13:36:03 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/10 20:17:39 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ static	 int	wait_instruction(t_stack stack_a, t_stack stack_b)
 	return (0);
 }
 
+static	t_bool	is_sorted(t_stack stack)
+{
+	int	i;
+
+	i = 1;
+	while (i < stack.len)
+	{
+		if (stack.table[i - 1] > stack.table[i])
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 int				main(int ac, char **av)
 {
 	int		error;
@@ -45,9 +59,18 @@ int				main(int ac, char **av)
 	{
 		stack_b = create_stack(stack_a.len);
 		wait_instruction(stack_a, stack_b);
+		if (is_sorted(stack_a))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
 		free(stack_a.table);
 		free(stack_b.table);
 	}
 	else
+	{
+		ft_putstr("Error: ");
+		ft_putnbr_fd(error, STDOUT_FILENO);
+		ft_putstr(" :(\n");
 		return (1);
+	}
 }
