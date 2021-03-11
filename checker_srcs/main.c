@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/10 20:17:39 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/11 13:53:52 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,37 @@ static	t_stack	create_stack(int len)
 	return (stack);
 }
 
-static	 int	wait_instruction(t_stack stack_a, t_stack stack_b)
+static	void	display_stack(t_stack stack)
+{
+	int		i;
+
+	ft_putstr("|");
+	i = 0;
+	while (i < stack.len)
+	{
+		ft_putnbr_fd(stack.table[i++], STDOUT_FILENO);
+		ft_putstr("|");
+	}
+	ft_putstr(" len: ");
+	ft_putnbr_fd(stack.len, STDOUT_FILENO);
+	ft_putstr("\n");
+}
+
+static	int		wait_instruction(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*inst;
 	while (ft_gnl(STDIN_FILENO, &inst))
 	{
 		if (do_instruction(inst, stack_a, stack_b))
 			ft_putstr("Error: unknow instruction\n");
+		else
+		{
+			ft_putstr("Stack A: ");
+			display_stack(*stack_a);
+			ft_putstr("Stack B: ");
+			display_stack(*stack_b);
+
+		}
 		free(inst);
 	}
 	return (0);
@@ -58,8 +82,8 @@ int				main(int ac, char **av)
 	if (!error)
 	{
 		stack_b = create_stack(stack_a.len);
-		wait_instruction(stack_a, stack_b);
-		if (is_sorted(stack_a))
+		wait_instruction(&stack_a, &stack_b);
+		if (is_sorted(stack_a) && !stack_b.len)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
