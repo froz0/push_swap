@@ -6,11 +6,11 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/10 19:17:58 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/11 13:57:25 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/12 12:32:32 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "shared.h"
 
 void	ft_sa(t_stack *stack_a, t_stack *stack_b)
 {

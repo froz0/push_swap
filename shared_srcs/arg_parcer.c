@@ -6,11 +6,11 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:43:43 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/10 19:33:42 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/12 12:33:11 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "shared.h"
 
 static t_bool	is_atoiable(char *str)
 {

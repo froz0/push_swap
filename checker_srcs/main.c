@@ -6,20 +6,11 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/11 13:53:52 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/12 12:33:34 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-static	t_stack	create_stack(int len)
-{
-	t_stack stack;
-
-	stack.len = 0;
-	stack.table = ft_calloc(len, sizeof(int));
-	return (stack);
-}
 
 static	void	display_stack(t_stack stack)
 {
