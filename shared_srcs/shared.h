@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 12:27:00 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 12:34:08 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/12 18:48:27 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef	struct	s_stack
 	int			len;
 }				t_stack;
 
+void			display_stack(t_stack stack);
 t_stack			parse_args(int ac, char **av, int *error);
 void			ft_sa(t_stack *stack_a, t_stack *stack_b);
 void			ft_sb(t_stack *stack_a, t_stack *stack_b);
