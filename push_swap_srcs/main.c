@@ -6,25 +6,54 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:07:47 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 18:49:38 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/13 15:08:14 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static	void	sort_stack(t_stack *a, t_stack *b)//changer pour un algo recurcif
+{
+	if (a->len == 3 && a->table[0] < a->table[1] && a->table[0] < a->table[2]
+			&& a->table[1] > a->table[2])
+	{
+		ft_sa(a, b);
+		ft_putstr("sa\n");
+		ft_ra(a, b);
+		ft_putstr("ra\n");
+	}
+	if (a->len == 3 && a->table[0] < a->table[1] && a->table[0] > a->table[2])
+	{
+		ft_rra(a, b);
+		ft_putstr("rra\n");
+	}
+	if (a->len == 3 && a->table[0] > a->table[2])
+	{
+		ft_ra(a, b);
+		ft_putstr("ra\n");
+	}
+	if (a->table[0] > a->table[1])
+	{
+		ft_sa(a, b);
+		ft_putstr("sa\n");
+	}
+}
+
 int main(int ac, char **av)
 {
 	int		error;
-	t_stack stack_a;
-	t_stack	stack_b;
+	t_stack a;
+	t_stack	b;
 
 	error = 0;
-	stack_a = parse_args(ac, av, &error);
+	a = parse_args(ac, av, &error);
 	if (!error)
 	{
-		stack_b = create_stack(stack_a.len);
-		free(stack_a.table);
-		free(stack_b.table);
+		b = create_stack(a.len);
+		if (a.len > 1)
+			sort_stack(&a, &b);
+		free(a.table);
+		free(b.table);
 	}
 	else
 	{

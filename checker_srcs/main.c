@@ -6,27 +6,11 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 12:33:34 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/13 14:20:11 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-static	void	display_stack(t_stack stack)
-{
-	int		i;
-
-	ft_putstr("|");
-	i = 0;
-	while (i < stack.len)
-	{
-		ft_putnbr_fd(stack.table[i++], STDOUT_FILENO);
-		ft_putstr("|");
-	}
-	ft_putstr(" len: ");
-	ft_putnbr_fd(stack.len, STDOUT_FILENO);
-	ft_putstr("\n");
-}
 
 static	int		wait_instruction(t_stack *stack_a, t_stack *stack_b)
 {
