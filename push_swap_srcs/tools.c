@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 15:56:33 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 20:26:06 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 23:42:45 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				get_min(t_stack *a)
 	return (tmp);
 }
 
-int				get_min_over(t_stack *a, int n)
+int				get_max(t_stack *a)
 {
 	int i;
 	int	tmp;
@@ -37,7 +37,32 @@ int				get_min_over(t_stack *a, int n)
 	tmp = a->table[0];
 	while (i < a->len)
 	{
-		if (a->table[i] > tmp && tmp < n)
+		if (a->table[i] > tmp)
+			tmp = a->table[i];
+		i++;
+	}
+	return (tmp);
+}
+
+int			get_upper(t_stack *a, int n)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	tmp = 0;
+	while (i < a->len)
+	{
+		if (a->table[i] > n)
+		{
+			tmp = a->table[i];
+			break ;
+		}
+		i++;
+	}
+	while (i < a->len)
+	{
+		if (a->table[i] < tmp && a->table[i] > n)
 			tmp = a->table[i];
 		i++;
 	}
