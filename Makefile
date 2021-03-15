@@ -6,14 +6,15 @@
 #    By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/08 16:38:19 by tmatis            #+#    #+#              #
-#    Updated: 2021/03/15 16:08:26 by tmatis           ###   ########.fr        #
+#    Updated: 2021/03/15 19:07:21 by tmatis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS_SHARED		= arg_parcer.c instructions.c instructions2.c instructions3.c
-SRCS_CHECKER	= main.c inst_parser.c
-SRCS_PUSH_SWAP	= main.c tools.c jump_to.c
+SRCS_SHARED		= arg_parcer.c instructions.c instructions2.c instructions3.c\
+				  tools.c do_operation.c
+SRCS_CHECKER	= main.c
+SRCS_PUSH_SWAP	= main.c tools.c rot_to.c sort_5.c insertion_rot.c
 
 OBJS_SHARED		= $(addprefix shared_srcs/, ${SRCS_SHARED:.c=.o})
 OBJS_CHECKER	= $(addprefix checker_srcs/, ${SRCS_CHECKER:.c=.o})
@@ -41,10 +42,10 @@ libft:
 clean:
 			@echo CLeaning OBJS and tests...
 			@make -sC ./libft fclean
-			@rm -f ${OBJS_CHECKER} ${OBJS_SHARED}
+			@rm -f ${OBJS_CHECKER} ${OBJS_SHARED} ${OBJS_PUSH_SWAP}
 fclean:		clean
 			@echo CLeaning program...
-			@rm -f checker
+			@rm -f checker push_swap
 
 re:			fclean all
 

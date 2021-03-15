@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 16:14:50 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 18:54:15 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,10 @@ static	int		wait_instruction(t_stack *stack_a, t_stack *stack_b)
 	char	*inst;
 	while (ft_gnl(STDIN_FILENO, &inst))
 	{
-		if (do_instruction(inst, stack_a, stack_b))
+		if (do_instruction(inst, stack_a, stack_b, false))
 			ft_putstr("Error: unknow instruction\n");
 		else
-		{
-			ft_putstr("----------------\n");
-			ft_putstr("Stack A: ");
-			display_stack(*stack_a);
-			ft_putstr("Stack B: ");
-			display_stack(*stack_b);
-			ft_putstr("----------------\n");
-		}
+			display_stacks(*stack_a, *stack_b);
 		free(inst);
 	}
 	return (0);
@@ -44,12 +37,7 @@ int				main(int ac, char **av)
 	if (!error)
 	{
 		stack_b = create_stack(stack_a.len);
-		ft_putstr("----------------\n");
-		ft_putstr("Stack A: ");
-		display_stack(stack_a);
-		ft_putstr("Stack B: ");
-		display_stack(stack_b);
-		ft_putstr("----------------\n");
+		display_stacks(stack_a, stack_b);
 		wait_instruction(&stack_a, &stack_b);
 		if (is_sorted(stack_a) && !stack_b.len)
 			ft_putstr("OK\n");

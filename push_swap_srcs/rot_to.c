@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jump_to.c                                          :+:      :+:    :+:   */
+/*   rot_to.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:02:19 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 16:11:05 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 20:35:55 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int		get_rot_up(t_stack stack, int n)
+int			get_rot_up(t_stack stack, int n)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ static	int		get_rot_up(t_stack stack, int n)
 	return (i);
 }
 
-static	int		get_rot_down(t_stack stack, int n)
+int			get_rot_down(t_stack stack, int n)
 {
 	int	i;
 	int	j;
@@ -57,7 +57,7 @@ static	int		get_rot_down(t_stack stack, int n)
 }
 
 
-void	rot_to_a(t_stack *a, int n)
+t_bool		rot_to_a(t_stack *a, int n)
 {
 	int	result_up;
 	int	result_down;
@@ -65,7 +65,6 @@ void	rot_to_a(t_stack *a, int n)
 
 	result_up = get_rot_up(*a, n);
 	result_down = get_rot_down(*a, n);
-	//printf("up: %i\ndown: %i\n", result_up, result_down);
 	if (result_up == a->len || result_down == a->len)
 		result = 0;
 	else if (result_up <= result_down)
@@ -75,14 +74,9 @@ void	rot_to_a(t_stack *a, int n)
 	while (result--)
 	{
 		if (result_up <= result_down)
-		{
-			ft_ra(a, a);
-			ft_putstr("ra\n");
-		}
+			do_instruction("ra", a , a, false);
 		else
-		{
-			ft_rra(a, a);
-			ft_putstr("rra\n");
-		}
+			do_instruction("rra", a, a, false);
 	}
+	return (result_up <= result_down);
 }

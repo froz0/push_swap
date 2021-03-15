@@ -6,29 +6,11 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 19:36:22 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 12:33:57 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 18:58:56 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
-
-void			ft_swap(int *a, int *b)
-{
-	int	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-t_stack			create_stack(int len)
-{
-	t_stack stack;
-
-	stack.len = 0;
-	stack.table = ft_calloc(len, sizeof(int));
-	return (stack);
-}
 
 void	ft_rra(t_stack *stack_a, t_stack *stack_b)
 {

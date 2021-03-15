@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inst_parser.c                                      :+:      :+:    :+:   */
+/*   do_operation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 13:22:24 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 12:30:42 by tmatis           ###   ########.fr       */
+/*   Created: 2021/03/15 18:49:21 by tmatis            #+#    #+#             */
+/*   Updated: 2021/03/15 18:53:59 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "shared.h"
 
 static	int		hash_index(char *str, char **str_table)
 {
@@ -43,7 +43,8 @@ static	void	do_operation(int id, t_stack *stack_a, t_stack *stack_b)
 	operation[id](stack_a, stack_b);
 }
 
-t_bool			do_instruction(char *inst, t_stack *stack_a, t_stack *stack_b)
+t_bool			do_instruction(char *inst, t_stack *stack_a, t_stack *stack_b,
+		t_bool mute)
 {
 	char	*inst_set[11];
 	int		index;
@@ -61,7 +62,14 @@ t_bool			do_instruction(char *inst, t_stack *stack_a, t_stack *stack_b)
 	inst_set[10] = NULL;
 	index = hash_index(inst, inst_set);
 	if (index != -1)
+	{
+		if (!mute)
+		{
+			ft_putstr(inst);
+			ft_putstr("\n");
+		}
 		do_operation(index, stack_a, stack_b);
+	}
 	else
 		return (true);
 	return (false);
