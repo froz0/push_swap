@@ -6,14 +6,14 @@
 #    By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/08 16:38:19 by tmatis            #+#    #+#              #
-#    Updated: 2021/03/12 17:10:00 by tmatis           ###   ########.fr        #
+#    Updated: 2021/03/15 16:08:26 by tmatis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 SRCS_SHARED		= arg_parcer.c instructions.c instructions2.c instructions3.c
-SRCS_CHECKER	= main.c  inst_parser.c
-SRCS_PUSH_SWAP	= main.c
+SRCS_CHECKER	= main.c inst_parser.c
+SRCS_PUSH_SWAP	= main.c tools.c jump_to.c
 
 OBJS_SHARED		= $(addprefix shared_srcs/, ${SRCS_SHARED:.c=.o})
 OBJS_CHECKER	= $(addprefix checker_srcs/, ${SRCS_CHECKER:.c=.o})

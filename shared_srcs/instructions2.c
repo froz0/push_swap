@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 15:28:15 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 18:48:42 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 12:19:31 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,17 @@ void		display_stack(t_stack stack)
 	ft_putstr("\n");
 }
 
+t_bool		is_sorted(t_stack stack)
+{
+	int	i;
+
+	i = 1;
+	while (i < stack.len)
+	{
+		if (stack.table[i - 1] > stack.table[i])
+			return (false);
+		i++;
+	}
+	return (true);
+}
 

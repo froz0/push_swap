@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 12:27:00 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 18:48:27 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 12:19:11 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void			ft_rrb(t_stack *stack_a, t_stack *stack_b);
 void			ft_rrr(t_stack *stack_a, t_stack *stack_b);
 void			ft_swap(int *a, int *b);
 t_stack			create_stack(int len);
+t_bool			is_sorted(t_stack stack);
 #endif

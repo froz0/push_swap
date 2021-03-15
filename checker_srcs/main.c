@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/13 14:20:11 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/15 16:14:50 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,16 @@ static	int		wait_instruction(t_stack *stack_a, t_stack *stack_b)
 			ft_putstr("Error: unknow instruction\n");
 		else
 		{
+			ft_putstr("----------------\n");
 			ft_putstr("Stack A: ");
 			display_stack(*stack_a);
 			ft_putstr("Stack B: ");
 			display_stack(*stack_b);
-
+			ft_putstr("----------------\n");
 		}
 		free(inst);
 	}
 	return (0);
-}
-
-static	t_bool	is_sorted(t_stack stack)
-{
-	int	i;
-
-	i = 1;
-	while (i < stack.len)
-	{
-		if (stack.table[i - 1] > stack.table[i])
-			return (false);
-		i++;
-	}
-	return (true);
 }
 
 int				main(int ac, char **av)
@@ -57,6 +44,12 @@ int				main(int ac, char **av)
 	if (!error)
 	{
 		stack_b = create_stack(stack_a.len);
+		ft_putstr("----------------\n");
+		ft_putstr("Stack A: ");
+		display_stack(stack_a);
+		ft_putstr("Stack B: ");
+		display_stack(stack_b);
+		ft_putstr("----------------\n");
 		wait_instruction(&stack_a, &stack_b);
 		if (is_sorted(stack_a) && !stack_b.len)
 			ft_putstr("OK\n");
