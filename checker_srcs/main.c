@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 18:54:15 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/16 00:18:05 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	int		wait_instruction(t_stack *stack_a, t_stack *stack_b)
 	char	*inst;
 	while (ft_gnl(STDIN_FILENO, &inst))
 	{
-		if (do_instruction(inst, stack_a, stack_b, false))
+		if (do_instruction(inst, stack_a, stack_b, true))
 			ft_putstr("Error: unknow instruction\n");
 		else
 			display_stacks(*stack_a, *stack_b);
@@ -37,7 +37,7 @@ int				main(int ac, char **av)
 	if (!error)
 	{
 		stack_b = create_stack(stack_a.len);
-		display_stacks(stack_a, stack_b);
+		//display_stacks(stack_a, stack_b);
 		wait_instruction(&stack_a, &stack_b);
 		if (is_sorted(stack_a) && !stack_b.len)
 			ft_putstr("OK\n");
