@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:07:47 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 18:55:33 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/16 12:47:32 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static	void	sort_stack(t_stack *a, t_stack *b)
 {
 	if (a->len <= 5)
 		sort_under_6(a, b);
+	else
+		insersion_sort(a, b);
 }
 
 int main(int ac, char **av)

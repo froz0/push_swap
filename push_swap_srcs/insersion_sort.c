@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   insersion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/12 17:11:33 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/16 13:07:30 by tmatis           ###   ########.fr       */
+/*   Created: 2021/03/16 12:41:15 by tmatis            #+#    #+#             */
+/*   Updated: 2021/03/16 12:46:10 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#include "push_swap.h"
 
-# define PUSH_SWAP_H
-
-# include "../libft/libft.h"
-# include "../shared_srcs/shared.h"
-
-void	insertion_rot(t_stack *stack, t_stack *stack_b, int n);
-int		get_min(t_stack *a);
-int		get_max(t_stack *a);
-int		get_upper(t_stack *a, int n);
-t_bool	rot_to_a(t_stack *a, int n);
-void	sort_under_6(t_stack *a, t_stack *b);
-void	insersion_sort(t_stack *a, t_stack *b);
-#endif
+void	insersion_sort(t_stack *a, t_stack *b)
+{
+	while (a->len)
+	{
+		rot_to_a(a, get_min(a));
+		do_instruction("pb", a, b, false);
+	}
+	while (b->len)
+		do_instruction("pa", a, b, false);
+}
