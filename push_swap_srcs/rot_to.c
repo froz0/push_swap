@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:02:19 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/16 13:07:22 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/19 15:01:32 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ int			get_rot_down(t_stack *stack, int n)
 	return (i);
 }
 
-
-t_bool		rot_to_a(t_stack *a, int n)
+void		rot_to_a(t_stack *a, int n)
 {
 	int	result_up;
 	int	result_down;
@@ -78,5 +77,27 @@ t_bool		rot_to_a(t_stack *a, int n)
 		else
 			do_instruction("rra", a, a, false);
 	}
-	return (result_up <= result_down);
+}
+
+void		rot_to_b(t_stack *a, int n)
+{
+	int	result_up;
+	int	result_down;
+	int	result;
+
+	result_up = get_rot_up(a, n);
+	result_down = get_rot_down(a, n);
+	if (result_up == a->len || result_down == a->len)
+		result = 0;
+	else if (result_up <= result_down)
+		result = result_up;
+	else
+		result = result_down;
+	while (result--)
+	{
+		if (result_up <= result_down)
+			do_instruction("rb", a , a, false);
+		else
+			do_instruction("rrb", a, a, false);
+	}
 }

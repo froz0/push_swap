@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/16 23:05:03 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/19 15:38:24 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static	int		wait_instruction(t_stack *stack_a, t_stack *stack_b)
 	{
 		if (do_instruction(inst, stack_a, stack_b, true))
 			ft_putstr("Error: unknow instruction\n");
+		//else
+		//	display_stacks(*stack_a, *stack_b);
 		free(inst);
 	}
 	return (0);

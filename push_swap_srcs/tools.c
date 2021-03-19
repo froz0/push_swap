@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 15:56:33 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 23:42:45 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/19 15:07:34 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,25 @@ int			get_upper(t_stack *a, int n)
 		i++;
 	}
 	return (tmp);
+}
+
+int get_wanted_index(t_stack *a, t_stack *b, int n)
+{
+	int	i;
+	int	counter;
+
+	counter = 0;
+	i = -1;
+	while (++i < a->len)
+	{
+		if (a->table[i] < n)
+			counter++;
+	}
+	i = -1;
+	while (++i < b->len)
+	{
+		if (b->table[i] < n)
+			counter++;
+	}
+	return (counter);
 }
