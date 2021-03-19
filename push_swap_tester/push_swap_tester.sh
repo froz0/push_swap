@@ -1,3 +1,4 @@
+#!/bin/bash
 RESET="\033[0m"
 BLACK="\033[30m"
 RED="\033[31m"
@@ -31,7 +32,6 @@ function compil()
 		exit 0
 	fi
 	printf $BOLDYELLOW"Compiling succesfull !$RESET\n"
-	sleep 1
 }
 
 function basetest()
@@ -45,16 +45,21 @@ function basetest()
 	NBR_ERROR=0
 	let "NBR_TEST=$2 - $1"
 	printf $BOLDYELLOW"Begin basic test of $BOLDRED$NBR_TEST$BOLDYELLOW random list from size $BOLDRED$1$BOLDYELLOW to $BOLDRED$2$BOLDYELLOW!$RESET\n"
-	sleep 3
 	for NBR in `seq $1 $2`;
 	do
 		INSTRUCT=0
 		LIST=$(perl -e "use List::Util 'shuffle'; my @out = (shuffle 0..$NBR)[0..$NBR]; print \"@out\"")
 		set -v
-		ARG=${LIST[@]}; ./push_swap $ARG > output.txt ; cat output.txt | ./checker $ARG > result_checker.txt
+		ARG=${LIST[@]}; ./push_swap $ARG > output.txt ; cat output.txt | ./checker $ARG > result_checker.txt ; cat output.txt | ./srcs/ref_checker $ARG > result_checker2.txt
 		INSTRUCT=$(wc -l < "output.txt")
 		value=$(<result_checker.txt)
-		if [[ $value = "KO" ]]
+		value_2=$(<result_checker2.txt)
+		if [[ "$value" != "$value_2" ]]
+		then
+			printf $BOLDRED"Your checker output $value instead of $value_2 !\nFail$RESET"" in $BOLDRED$INSTRUCT$RESET instructions with size = $TOTAL$NBR/$2$RESET\n"
+			echo "LIST = "${LIST[@]}
+			let "NBR_ERROR=NBR_ERROR+1"
+		elif [[ $value = "KO" ]]
 		then
 			printf $BOLDRED"Fail$RESET"" in $BOLDRED$INSTRUCT$RESET instructions with size = $TOTAL$NBR/$2$RESET\n"
 			echo "LIST = "${LIST[@]}
@@ -92,7 +97,6 @@ function basetest()
 	else
 		printf $BOLDGREEN"Well done !$RESET\n"
 	fi
-	sleep 3
 }
 
 function optitest()
@@ -102,8 +106,15 @@ function optitest()
 	do
 		LIST=$(perl -e "use List::Util 'shuffle'; my @out = (shuffle 0..$1)[0..$1]; print \"@out\"")
 		set -v
-		ARG=${LIST[@]}; ./push_swap $ARG > output.txt ; cat output.txt | ./checker $ARG > /dev/null
+		ARG=${LIST[@]}; ./push_swap $ARG > output.txt ; cat output.txt | ./checker $ARG > result_checker.txt ; cat output.txt | ./srcs/ref_checker $ARG > result_checker2.txt
 		RESULT=$(wc -l < "output.txt")
+		value=$(<result_checker.txt)
+		value_2=$(<result_checker2.txt)
+		if [[ "$value" != "$value_2" ]] || [[ $value = "KO" ]]
+		then
+			printf $BOLDRED"Failed optitest with list = $RESET$ARG\n"
+			exit 1
+		fi
 		if [[ $BIGGEST -lt RESULT ]]
 		then
 			BIGGEST=$RESULT
@@ -111,7 +122,58 @@ function optitest()
 		let "O_RET+=RESULT"
 	done
 	let "O_RET=$O_RET/100"
-	sleep 3
+}
+
+function exec()
+{
+	rm output.txt
+	rm result_checker.txt
+	rm result_checker2.txt
+	RESULT=0
+	value=0
+	value_2=0
+	./push_swap $1 > /dev/null 2> output.txt ; cat output.txt | ./checker $1 > /dev/null 2> result_checker.txt ; cat output.txt | ./srcs/ref_checker $1 > /dev/null 2> result_checker2.txt
+	RESULT=$(<output.txt)
+	value=$(<result_checker.txt)
+	value_2=$(<result_checker2.txt)
+	if [[ "$value" != "$value_2" ]]
+	then
+		printf $BOLDRED"\nYour checker output "$value" instead of "$value_2" ! Failed error test with list = $RESET"
+		echo \["$1"\]
+	elif [[ "$RESULT" != "$value_2" ]]
+	then
+		printf $BOLDRED"\nYour push_swap output "$RESULT" instead of "$value_2" ! Failed error test with list = $RESET"
+		echo \["$1"\]
+	else
+		printf $BOLDGREEN"\nSuccess error test with list = $RESET"
+		echo \["$1"\]
+	fi
+}
+
+function errortest()
+{
+	ERROR=0
+	printf $BOLDYELLOW"Begin error test$RESET\n"
+	printf $BOLDCYAN"\nNo args$RESET\n"
+	exec
+	printf $BOLDCYAN"\nWith alpha char$RESET\n"
+	exec "1 2 3 6 4 a"
+	exec "a 1 2 3 5 6"
+	exec "1 2 3 4 A"
+	exec "A"
+	printf $BOLDCYAN"\nWith value > int$RESET\n"
+	exec "1 2 3 4 2147483647"
+	exec "1 2 3 4 2147483648"
+	exec "1 2 3 4 -2147483647"
+	exec "1 2 3 4 -2147483648"
+	exec "1 2 3 4 -2147483649"
+	printf $BOLDCYAN"\nWith dupe > int$RESET\n"
+	exec "1 2 3 1"
+	exec "1 2 1 3"
+	exec "3 2 1 1"
+	exec "1 1 2 3"
+	exec "2 1 1 4"
+	
 }
 
 if [[ $# -eq 0 ]]
@@ -176,6 +238,7 @@ then
 	then	
 		printf $BOLDRED"Considering the barem, you have 1/5 with size = 500\n$RESET"
 	fi
+	errortest
     exit 0
 fi
 
