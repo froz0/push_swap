@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:49:21 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 14:26:59 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 15:42:39 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ t_bool			is_integer(char *str)
 		return (false);
 	return (true);
 }
-
 
 static	int		hash_index(char *str, char **str_table)
 {
