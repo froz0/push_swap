@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:02:19 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 12:20:04 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 16:26:54 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int			get_rot_up(t_stack *stack, int n)
 	{
 		if (stack->table[0] == n)
 			break ;
-		ft_ra(stack, stack);
+		ft_ra(stack, stack, 0);
 		i++;
 	}
 	j = 0;
 	while (j < i)
 	{
-		ft_rra(stack, stack);
+		ft_rra(stack, stack, 0);
 		j++;
 	}
 	return (i);
@@ -44,13 +44,13 @@ int			get_rot_down(t_stack *stack, int n)
 	{
 		if (stack->table[0] == n)
 			break ;
-		ft_rra(stack, stack);
+		ft_rra(stack, stack, 0);
 		i++;
 	}
 	j = 0;
 	while (j < i)
 	{
-		ft_ra(stack, stack);
+		ft_ra(stack, stack, 0);
 		j++;
 	}
 	return (i);

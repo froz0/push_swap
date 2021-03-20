@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:53:42 by tmatis            #+#    #+#             */
-/*   Updated: 2021/01/04 16:01:35 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 16:52:25 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,10 @@
 void	ft_putstr(char *str)
 {
 	write(1, str, ft_strlen(str));
+}
+
+void	ft_putnl(char *str)
+{
+	ft_putstr(str);
+	ft_putstr("\n");
 }

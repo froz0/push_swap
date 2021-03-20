@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 23:28:00 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 14:07:45 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 16:48:23 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void			process_instruction(char *inst, t_stack *a, t_stack *b,
 			count_ra++;
 		else
 			count_rb++;
-		do_instruction(inst, a, b, true);
+		do_instruction(inst, a, b, 0);
 	}
 	else
 	{
 		clear_buff(&count_ra, &count_rb, dir);
-		do_instruction(inst, a, b, false);
+		do_instruction(inst, a, b, 1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:49:21 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 15:42:39 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 16:53:10 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static	int		hash_index(char *str, char **str_table)
 	return (-1);
 }
 
-static	void	do_operation(int id, t_stack *stack_a, t_stack *stack_b)
+static	void	do_operation(int id, t_stack *stack_a, t_stack *stack_b, int log_level)
 {
-	void	((*operation[11])(t_stack *stack_a, t_stack *stack_b));
+	void	((*operation[11])(t_stack *stack_a, t_stack *stack_b, int log_level));
 
 	operation[0] = ft_sa;
 	operation[1] = ft_sb;
@@ -75,11 +75,11 @@ static	void	do_operation(int id, t_stack *stack_a, t_stack *stack_b)
 	operation[8] = ft_rrb;
 	operation[9] = ft_rrr;
 	operation[10] = ft_rr;
-	operation[id](stack_a, stack_b);
+	operation[id](stack_a, stack_b, log_level);
 }
 
 t_bool			do_instruction(char *inst, t_stack *stack_a, t_stack *stack_b,
-		t_bool mute)
+		int log_level)
 {
 	char	*inst_set[12];
 	int		index;
@@ -99,9 +99,9 @@ t_bool			do_instruction(char *inst, t_stack *stack_a, t_stack *stack_b,
 	index = hash_index(inst, inst_set);
 	if (index != -1)
 	{
-		if (!mute)
-			printf("%s\n", inst);
-		do_operation(index, stack_a, stack_b);
+		if (log_level > 0)
+			ft_putnl(inst);
+		do_operation(index, stack_a, stack_b, log_level);
 		return (true);
 	}
 	else
