@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 16:02:19 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/19 15:01:32 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 11:36:09 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void		rot_to_a(t_stack *a, int n)
 	while (result--)
 	{
 		if (result_up <= result_down)
-			do_instruction("ra", a , a, false);
+			process_instruction("ra", a, a);
 		else
-			do_instruction("rra", a, a, false);
+			process_instruction("rra", a, a);
 	}
 }
 
@@ -96,8 +96,8 @@ void		rot_to_b(t_stack *a, int n)
 	while (result--)
 	{
 		if (result_up <= result_down)
-			do_instruction("rb", a , a, false);
+			process_instruction("rb", a , a);
 		else
-			do_instruction("rrb", a, a, false);
+			process_instruction("rrb", a, a);
 	}
 }

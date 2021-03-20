@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 23:28:00 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/19 23:51:47 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 11:43:39 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,26 @@ static	void	clear_buff(int *count_ra, int *count_rb, t_bool dir)
 		(*count_ra)--;
 		(*count_rb)--;
 	}
-	while ((*count_ra)--)
+	while (*count_ra)
 	{
 		if (dir)
 			ft_putstr("ra\n");
 		else
 			ft_putstr("rra\n");
+		(*count_ra)--;
 	}
-	while ((*count_rb)--)
+	while (*count_rb)
 	{
 		if (dir)
 			ft_putstr("rb\n");
 		else
 			ft_putstr("rrb\n");
+		(*count_rb)--;
 	}
+}
+static	t_bool	get_direction(char *inst)
+{
+	return (inst[1] != 'r');
 }
 
 void	process_instruction(char *inst, t_stack *a, t_stack *b)
@@ -47,7 +53,16 @@ void	process_instruction(char *inst, t_stack *a, t_stack *b)
 
 	if (inst[0] == 'r')
 	{
-
+		if (get_direction(inst) != dir)
+		{
+			clear_buff(&count_ra, &count_rb, dir);
+			dir = get_direction(inst);
+		}
+		if (inst[1] == 'a' || inst[2] == 'a')
+			count_ra++;
+		else
+			count_rb++;
+		do_instruction(inst, a, b, true);
 	}
 	else
 	{

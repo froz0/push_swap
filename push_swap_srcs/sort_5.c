@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:41:46 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/15 23:49:45 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 11:36:47 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	sort_stack_3(t_stack *a, t_stack *b)
 {
 	if (a->len == 3 && a->table[0] < a->table[1] && a->table[0] < a->table[2]
 			&& a->table[1] > a->table[2])
-		do_instruction("sa", a, b, false);
+		process_instruction("sa", a, b);
 	if (a->len == 3 && a->table[0] < a->table[1] && a->table[0] > a->table[2])
-		do_instruction("rra", a, b, false);
+		process_instruction("rra", a, b);
 	if (a->len == 3 && a->table[0] > a->table[2])
-		do_instruction("ra", a, b, false);
+		process_instruction("ra", a, b);
 	if (a->table[0] > a->table[1])
-		do_instruction("sa", a, b, false);
+		process_instruction("sa", a, b);
 }
 
 void	sort_under_6(t_stack *a, t_stack *b)
@@ -30,8 +30,8 @@ void	sort_under_6(t_stack *a, t_stack *b)
 	if (a->len > 3)
 	{
 		if (a->len == 5)
-			do_instruction("pb", a, b, false);
-		do_instruction("pb", a, b, false);
+			process_instruction("pb", a, b);
+		process_instruction("pb", a, b);
 	}
 	sort_stack_3(a, b);
 	while (b->len)
@@ -42,7 +42,7 @@ void	sort_under_6(t_stack *a, t_stack *b)
 			rot_to_a(a, get_min(a));
 		else
 			rot_to_a(a, get_upper(a, b->table[0]));
-		do_instruction("pa", a, b, false);
+		process_instruction("pa", a, b);
 	}
 	rot_to_a(a, get_min(a));
 }

@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 23:05:17 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/19 18:59:52 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 11:35:24 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		sort_chunk(t_stack *a, t_stack *b, int index_max)
 			rot_to_b(b, get_max(b));
 		else
 			rot_to_b(b, get_lower(b, a->table[0]));
-		do_instruction("pb", a, b, false);
+		process_instruction("pb", a, b);
 	}
 }
 
@@ -85,7 +85,7 @@ void		sort_100(t_stack *a, t_stack *b)
 	while (b->len)
 	{
 		rot_to_b(b, get_max(b));
-		do_instruction("pa", a, b, false);
+		process_instruction("pa", a, b);
 	}
 }
 
@@ -105,6 +105,6 @@ void	sort_500(t_stack *a, t_stack *b)
 	while (b->len)
 	{
 		rot_to_b(b, get_max(b));
-		do_instruction("pa", a, b, false);
+		process_instruction("pa", a, b);
 	}
 }
