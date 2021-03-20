@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 15:56:33 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/19 18:42:56 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 14:11:11 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				get_max(t_stack *a)
 	return (tmp);
 }
 
-int			get_upper(t_stack *a, int n)
+int				get_upper(t_stack *a, int n)
 {
 	int	i;
 	int	tmp;
@@ -69,7 +69,7 @@ int			get_upper(t_stack *a, int n)
 	return (tmp);
 }
 
-int		get_lower(t_stack *a, int n)
+int				get_lower(t_stack *a, int n)
 {
 	int	i;
 	int	tmp;
@@ -94,7 +94,7 @@ int		get_lower(t_stack *a, int n)
 	return (tmp);
 }
 
-int get_wanted_index(t_stack *a, t_stack *b, int n)
+int				get_wanted_index(t_stack *a, t_stack *b, int n)
 {
 	int	i;
 	int	counter;

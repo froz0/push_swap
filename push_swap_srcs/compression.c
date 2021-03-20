@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 23:28:00 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 11:43:39 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 14:07:45 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,22 @@ static	void	clear_buff(int *count_ra, int *count_rb, t_bool dir)
 		(*count_rb)--;
 	}
 }
+
 static	t_bool	get_direction(char *inst)
 {
 	return (inst[1] != 'r');
 }
 
-void	process_instruction(char *inst, t_stack *a, t_stack *b)
+void			process_instruction(char *inst, t_stack *a, t_stack *b,
+		t_bool clear)
 {
 	static	t_bool	dir = true;
 	static	int		count_ra = 0;
 	static	int		count_rb = 0;
 
-	if (inst[0] == 'r')
+	if (clear)
+		clear_buff(&count_ra, &count_rb, dir);
+	else if (inst[0] == 'r')
 	{
 		if (get_direction(inst) != dir)
 		{

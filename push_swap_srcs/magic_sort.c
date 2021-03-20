@@ -6,13 +6,13 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 23:05:17 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 11:35:24 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 14:08:31 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		get_best_number(t_stack *a, int n0, int n1)
+int			get_best_number(t_stack *a, int n0, int n1)
 {
 	int	n0_champ;
 	int	rot_down_n0;
@@ -33,7 +33,7 @@ int		get_best_number(t_stack *a, int n0, int n1)
 		return (n0);
 }
 
-int get_chunk_hold(t_stack *a, t_stack *b, int index_max)
+int			get_chunk_hold(t_stack *a, t_stack *b, int index_max)
 {
 	int	i;
 	int	hold_first;
@@ -47,7 +47,7 @@ int get_chunk_hold(t_stack *a, t_stack *b, int index_max)
 		if (get_wanted_index(a, b, a->table[i]) < index_max)
 		{
 			hold_first = a->table[i];
-			break;
+			break ;
 		}
 	}
 	i = a->len;
@@ -56,7 +56,7 @@ int get_chunk_hold(t_stack *a, t_stack *b, int index_max)
 		if (get_wanted_index(a, b, a->table[i]) < index_max)
 		{
 			hold_last = a->table[i];
-			break;
+			break ;
 		}
 	}
 	return (get_best_number(a, hold_first, hold_last));
@@ -71,7 +71,7 @@ void		sort_chunk(t_stack *a, t_stack *b, int index_max)
 			rot_to_b(b, get_max(b));
 		else
 			rot_to_b(b, get_lower(b, a->table[0]));
-		process_instruction("pb", a, b);
+		process_instruction("pb", a, b, false);
 	}
 }
 
@@ -85,11 +85,11 @@ void		sort_100(t_stack *a, t_stack *b)
 	while (b->len)
 	{
 		rot_to_b(b, get_max(b));
-		process_instruction("pa", a, b);
+		process_instruction("pa", a, b, false);
 	}
 }
 
-void	sort_500(t_stack *a, t_stack *b)
+void		sort_500(t_stack *a, t_stack *b)
 {
 	sort_chunk(a, b, 45);
 	sort_chunk(a, b, 90);
@@ -105,6 +105,6 @@ void	sort_500(t_stack *a, t_stack *b)
 	while (b->len)
 	{
 		rot_to_b(b, get_max(b));
-		process_instruction("pa", a, b);
+		process_instruction("pa", a, b, false);
 	}
 }

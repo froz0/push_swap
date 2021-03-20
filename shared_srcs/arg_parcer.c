@@ -6,22 +6,12 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:43:43 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/12 12:33:11 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 14:29:22 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 
-static t_bool	is_atoiable(char *str)
-{
-	while (*str)
-	{
-		if (!ft_isnum(*str) && *str != '-')
-			return (false);
-		str++;
-	}
-	return (true);
-}
 
 static int		check_args(int ac, char **av)
 {
@@ -38,7 +28,7 @@ static int		check_args(int ac, char **av)
 		j = 0;
 		while (nums[j])
 		{
-			if (is_atoiable(nums[j]))
+			if (is_integer(nums[j]))
 				len++;
 			else
 				return (-1);
@@ -122,9 +112,6 @@ t_stack			parse_args(int ac, char **av, int *error)
 		}
 	}
 	else
-	{
-		ft_putstr("Usage : ./checker 0 1 2 3 4 5 6\n");
 		*error = 1;
-	}
 	return (stack);
 }

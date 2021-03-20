@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:07:47 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/19 15:45:56 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 14:29:55 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static	void	sort_stack(t_stack *a, t_stack *b)
 		insersion_sort(a, b);
 }
 
-int main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	int		error;
 	t_stack a;
@@ -41,10 +41,5 @@ int main(int ac, char **av)
 		free(b.table);
 	}
 	else
-	{
-		ft_putstr("Error: ");
-		ft_putnbr_fd(error, STDOUT_FILENO);
-		ft_putstr(" :(\n");
-		return (1);
-	}
+		ft_putstr_fd("Error\n", 2);
 }

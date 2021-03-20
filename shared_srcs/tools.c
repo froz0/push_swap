@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/20 14:11:22 by tmatis            #+#    #+#             */
+/*   Updated: 2021/03/20 14:11:55 by tmatis           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shared.h"
 
 static	void	display_stack(t_stack stack)
@@ -16,17 +28,17 @@ static	void	display_stack(t_stack stack)
 	ft_putstr("\n");
 }
 
-void	display_stacks(t_stack a, t_stack b)
+void			display_stacks(t_stack a, t_stack b)
 {
-		ft_putstr("----------------\n");
-		ft_putstr("Stack A: ");
-		display_stack(a);
-		ft_putstr("Stack B: ");
-		display_stack(b);
-		ft_putstr("----------------\n");
+	ft_putstr("----------------\n");
+	ft_putstr("Stack A: ");
+	display_stack(a);
+	ft_putstr("Stack B: ");
+	display_stack(b);
+	ft_putstr("----------------\n");
 }
 
-t_bool		is_sorted(t_stack stack)
+t_bool			is_sorted(t_stack stack)
 {
 	int	i;
 
@@ -57,4 +69,3 @@ t_stack			create_stack(int len)
 	stack.table = ft_calloc(len, sizeof(int));
 	return (stack);
 }
-

@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:11:33 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 11:32:56 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 12:10:23 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	sort_under_6(t_stack *a, t_stack *b);
 void	insersion_sort(t_stack *a, t_stack *b);
 int		get_wanted_index(t_stack *a, t_stack *b, int n);
 int		get_lower(t_stack *a, int n);
-void	process_instruction(char *inst, t_stack *a, t_stack *b);
+void	process_instruction(char *inst, t_stack *a, t_stack *b, t_bool clear);
+
 #endif
