@@ -6,7 +6,7 @@
 #    By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/08 16:38:19 by tmatis            #+#    #+#              #
-#    Updated: 2021/03/20 11:32:41 by tmatis           ###   ########.fr        #
+#    Updated: 2021/03/20 17:41:20 by tmatis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,5 +49,7 @@ fclean:		clean
 			@rm -f checker push_swap
 
 re:			fclean all
+
+bonus: 		all
 
 .PHONY:		all clean fclean re libft 
