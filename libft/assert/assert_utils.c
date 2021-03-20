@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 13:53:33 by tmatis            #+#    #+#             */
-/*   Updated: 2021/02/13 17:20:22 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:38:29 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_tests	init_tester(char name[256], int log_level)
 {
-	t_tests	tester; 
+	t_tests	tester;
 
 	strcpy(tester.name, name);
 	tester.tests_success = 0;

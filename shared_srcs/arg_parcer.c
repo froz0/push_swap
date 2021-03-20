@@ -6,12 +6,11 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 12:43:43 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 14:29:22 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:35:13 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
-
 
 static int		check_args(int ac, char **av)
 {

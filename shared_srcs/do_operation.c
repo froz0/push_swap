@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 18:49:21 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 16:53:10 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:36:07 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,10 @@ static	int		hash_index(char *str, char **str_table)
 	return (-1);
 }
 
-static	void	do_operation(int id, t_stack *stack_a, t_stack *stack_b, int log_level)
+static	void	do_operation(int id, t_stack *stack_a, t_stack *stack_b,
+		int log_level)
 {
-	void	((*operation[11])(t_stack *stack_a, t_stack *stack_b, int log_level));
+	void	((*operation[11])(t_stack *stack_a, t_stack *stack_b, int ll));
 
 	operation[0] = ft_sa;
 	operation[1] = ft_sb;

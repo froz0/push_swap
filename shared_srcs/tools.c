@@ -6,13 +6,13 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 14:11:22 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 16:31:47 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:36:21 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shared.h"
 
-void		display_stack(t_stack *stack, int index_a, int index_b,
+void			display_stack(t_stack *stack, int index_a, int index_b,
 		int log_level)
 {
 	int		i;
