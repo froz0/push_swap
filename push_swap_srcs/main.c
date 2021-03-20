@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:07:47 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 14:29:55 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:30:20 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,19 @@ int				main(int ac, char **av)
 	t_stack a;
 	t_stack	b;
 
-	error = 0;
-	a = parse_args(ac, av, &error);
-	if (!error)
+	if (ac > 1)
 	{
-		b = create_stack(a.len);
-		if (a.len > 1 && !is_sorted(a))
-			sort_stack(&a, &b);
-		free(a.table);
-		free(b.table);
+		error = 0;
+		a = parse_args(ac, av, &error);
+		if (!error)
+		{
+			b = create_stack(a.len);
+			if (a.len > 1 && !is_sorted(a))
+				sort_stack(&a, &b);
+			free(a.table);
+			free(b.table);
+		}
+		else
+			ft_putstr_fd("Error\n", 2);
 	}
-	else
-		ft_putstr_fd("Error\n", 2);
 }

@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 14:10:31 by tmatis            #+#    #+#             */
-/*   Updated: 2021/03/20 17:22:30 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:32:42 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ int				main(int ac, char **av)
 		free(stack_a.table);
 		free(stack_b.table);
 	}
-	else
+	else if (ac > 1)
 		ft_putstr_fd("Error\n", 2);
 }
